@@ -37,6 +37,5 @@ Thumbs.db
 # Local configuration
 local.properties
 
-# Plugin build artifacts
-build/distributions/*.zip
-!build/distributions/open-in-aieditor-*.zip
+# GitHub Actions
+!.github/

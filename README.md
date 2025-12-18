@@ -1,5 +1,9 @@
 # Open In AIEditor
 
+[![Build](https://github.com/qiuapeng921/OpenInAIEditor/actions/workflows/build.yml/badge.svg)](https://github.com/qiuapeng921/OpenInAIEditor/actions/workflows/build.yml)
+[![Release](https://github.com/qiuapeng921/OpenInAIEditor/actions/workflows/release.yml/badge.svg)](https://github.com/qiuapeng921/OpenInAIEditor/actions/workflows/release.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A simple JetBrains IDE plugin that adds context menu options to open files and folders in AI-powered editors.
 
 ## Features
@@ -23,6 +27,29 @@ A simple JetBrains IDE plugin that adds context menu options to open files and f
 ## Usage
 
 Right-click on any file or folder → `Open In AIEditor` → Choose your editor
+
+## Development
+
+### Building from Source
+```bash
+git clone https://github.com/qiuapeng921/OpenInAIEditor.git
+cd OpenInAIEditor
+./gradlew build
+```
+
+### Running Tests
+```bash
+./gradlew test
+```
+
+### Running in Development IDE
+```bash
+./gradlew runIde
+```
+
+## Contributing
+
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ## License
 
