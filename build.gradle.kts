@@ -47,21 +47,38 @@ tasks {
         
         // 插件描述信息
         pluginDescription.set("""
-            A powerful JetBrains IDE plugin that seamlessly integrates 16 AI code editors into your development workflow.
-            Quickly switch between JetBrains IDE and your favorite AI editors with cursor position preservation.
+            <h2>Open In AIEditor - AI 代码编辑器快速切换插件</h2>
             
-            ✨ Key Features:
-            • Support for 16 AI code editors (Cursor, Windsurf, Void, Antigravity, Kiro, and more)
-            • Smart enable/disable control - only show the editors you need
-            • Smart context menu integration - right-click to open in any enabled editor
-            • Status bar widget for quick editor switching
-            • Cursor position preservation - maintains line and column when switching editors
-            • Cross-platform compatibility (macOS, Windows, Linux)
-            • Flexible configuration - individual enable switch and path for each editor
-            • International support (English & Chinese)
+            <p>一个强大的 JetBrains IDE 插件，让你可以无缝切换到 16 个主流 AI 代码编辑器，保持光标位置和编辑上下文。</p>
             
-            🤖 Supported AI Editors:
-            Cursor, Windsurf, Void, Trae, Qoder, Kiro, Antigravity, CatPawAI, Melty, Aide, Zed, PearAI, Void Editor, Supermaven, Aider, Continue
+            <h3>✨ 核心特性</h3>
+            <ul>
+                <li><strong>支持 16 个 AI 代码编辑器</strong>：Cursor, Windsurf, Void, Trae, Qoder, Kiro, Antigravity, CatPawAI, Melty, Aide, Zed, PearAI, Void Editor, Supermaven, Aider, Continue</li>
+                <li><strong>智能启用控制</strong>：每个编辑器独立的启用开关，只显示你需要的编辑器</li>
+                <li><strong>右键菜单集成</strong>：在文件或文件夹上右键即可快速打开</li>
+                <li><strong>状态栏组件</strong>：快速切换默认编辑器</li>
+                <li><strong>光标位置保持</strong>：自动定位到相同的行和列</li>
+                <li><strong>跨平台支持</strong>：完整支持 macOS, Windows, Linux</li>
+                <li><strong>灵活配置</strong>：每个编辑器独立的路径配置</li>
+                <li><strong>国际化支持</strong>：中英文界面</li>
+            </ul>
+            
+            <h3>🚀 使用方法</h3>
+            <ol>
+                <li>打开 <code>Settings → Tools → AIEditor</code></li>
+                <li>勾选要使用的 AI 编辑器</li>
+                <li>配置编辑器路径（macOS 通常自动检测）</li>
+                <li>右键点击文件 → <code>Open In AIEditor</code> → 选择编辑器</li>
+            </ol>
+            
+            <h3>⚡ 性能优化</h3>
+            <ul>
+                <li>插件体积仅 <strong>50 KB</strong>，下载和安装极快</li>
+                <li>使用 IDE 提供的 Kotlin 标准库，避免版本冲突</li>
+            </ul>
+            
+            <h3>🤖 支持的 AI 编辑器</h3>
+            <p>Cursor, Windsurf, Void, Trae, Qoder, Kiro, Antigravity, CatPawAI, Melty, Aide, Zed, PearAI, Void Editor, Supermaven, Aider, Continue</p>
         """.trimIndent())
         
         // 从 CHANGELOG.md 读取变更日志
