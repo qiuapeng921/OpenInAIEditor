@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.github.qiuapeng921.openaieditor"
-version = "1.0.2"
+version = "1.0.3"
 
 repositories {
     mavenCentral()
@@ -15,7 +15,11 @@ intellij {
     version.set("2023.3.8")
     type.set("IC") // IntelliJ IDEA 社区版
     
-    // 移除插件配置，使用默认的平台插件
+    // 关键配置:防止自动更新版本范围
+    updateSinceUntilBuild.set(false)
+    sameSinceUntilBuild.set(false)
+    
+    // 移除插件配置,使用默认的平台插件
     plugins.set(listOf())
 }
 
@@ -32,7 +36,7 @@ tasks {
 
     patchPluginXml {
         sinceBuild.set("233")
-        untilBuild.set("")  // 不设置上限，支持所有未来版本
+        untilBuild.set("253.*")  // 支持到 2025.3.x
         
         // 插件描述信息
         pluginDescription.set("""
