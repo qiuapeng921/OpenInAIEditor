@@ -5,6 +5,9 @@ on:
     tags:
       - 'v*'
 
+permissions:
+  contents: write
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -33,37 +36,23 @@ jobs:
       run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
       
     - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
-        body: |
-          ## What's Changed
+      run: |
+        gh release create ${{ github.ref_name }} \
+          --title "Release ${{ github.ref_name }}" \
+          --notes "## What's Changed
           
           See [CHANGELOG.md](https://github.com/qiuapeng921/OpenInAIEditor/blob/main/CHANGELOG.md) for detailed changes.
           
           ## Installation
           
-          1. Download the `open-in-aieditor-${{ steps.get_version.outputs.VERSION }}.zip` file below
-          2. In your JetBrains IDE: `Settings` → `Plugins` → `Install Plugin from Disk...`
+          1. Download the \`open-in-aieditor-${{ steps.get_version.outputs.VERSION }}.zip\` file below
+          2. In your JetBrains IDE: \`Settings\` → \`Plugins\` → \`Install Plugin from Disk...\`
           3. Select the downloaded ZIP file and restart your IDE
           
           ## Configuration
           
-          1. Go to `Settings` → `Tools` → `AIEditor`
-          2. Configure the executable paths for Antigravity and Kiro
-        draft: false
-        prerelease: false
-        
-    - name: Upload Release Asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: build/distributions/open-in-aieditor-${{ steps.get_version.outputs.VERSION }}.zip
-        asset_name: open-in-aieditor-${{ steps.get_version.outputs.VERSION }}.zip
-        asset_content_type: application/zip
+          1. Go to \`Settings\` → \`Tools\` → \`AIEditor\`
+          2. Configure the executable paths for Antigravity and Kiro" \
+          build/distributions/open-in-aieditor-${{ steps.get_version.outputs.VERSION }}.zip
