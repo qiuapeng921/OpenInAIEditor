@@ -35,6 +35,18 @@ jobs:
       id: get_version
       run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
       
+    - name: List build artifacts
+      run: |
+        echo "Build artifacts:"
+        ls -la build/distributions/
+        
+    - name: Find plugin zip file
+      id: find_zip
+      run: |
+        ZIP_FILE=$(find build/distributions/ -name "*.zip" | head -1)
+        echo "ZIP_FILE=$ZIP_FILE" >> $GITHUB_OUTPUT
+        echo "Found zip file: $ZIP_FILE"
+        
     - name: Create Release
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -47,7 +59,7 @@ jobs:
           
           ## Installation
           
-          1. Download the \`open-in-aieditor-${{ steps.get_version.outputs.VERSION }}.zip\` file below
+          1. Download the plugin ZIP file below
           2. In your JetBrains IDE: \`Settings\` → \`Plugins\` → \`Install Plugin from Disk...\`
           3. Select the downloaded ZIP file and restart your IDE
           
@@ -55,4 +67,4 @@ jobs:
           
           1. Go to \`Settings\` → \`Tools\` → \`AIEditor\`
           2. Configure the executable paths for Antigravity and Kiro" \
-          build/distributions/open-in-aieditor-${{ steps.get_version.outputs.VERSION }}.zip
+          ${{ steps.find_zip.outputs.ZIP_FILE }}
