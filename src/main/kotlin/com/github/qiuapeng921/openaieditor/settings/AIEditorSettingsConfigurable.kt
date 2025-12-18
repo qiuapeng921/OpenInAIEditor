@@ -1,7 +1,6 @@
 package com.github.qiuapeng921.openaieditor.settings
 
 import com.intellij.openapi.fileChooser.FileChooserDescriptor
-import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory
 import com.intellij.openapi.options.Configurable
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.TextFieldWithBrowseButton
@@ -26,10 +25,6 @@ class AIEditorSettingsConfigurable : Configurable {
      * 创建设置界面组件
      */
     override fun createComponent(): JComponent? {
-        // 创建文件选择器描述符
-        val fileDescriptor = FileChooserDescriptorFactory.createSingleFileDescriptor()
-            .withTitle("选择可执行文件")
-            .withDescription("选择 AI 编辑器的可执行文件")
         
         kiroPathField = TextFieldWithBrowseButton().apply {
             addActionListener {

@@ -2,6 +2,12 @@
 
 All notable changes to the "Open In AIEditor" plugin will be documented in this file.
 
+## [1.0.2] - 2025-12-18
+
+### Fixed
+- 移除未使用的废弃 API 调用 `FileChooserDescriptorFactory.createSingleFileDescriptor()`
+- 清理未使用的导入,进一步提升代码质量
+
 ## [1.0.1] - 2025-12-18
 
 ### Fixed

@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.github.qiuapeng921.openaieditor"
-version = "1.0.1"
+version = "1.0.2"
 
 repositories {
     mavenCentral()
