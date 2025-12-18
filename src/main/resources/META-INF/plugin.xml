@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<idea-plugin>
+    <id>com.github.qiuapeng921.openaieditor</id>
+    <name>Open In AIEditor</name>
+    <vendor email="qiuapeng921@gmail.com" url="https://github.com/qiuapeng921/open-in-aieditor">qiuapeng921</vendor>
+
+    <description><![CDATA[
+    A simple JetBrains IDE plugin that adds context menu options to open files and folders in AI-powered editors.
+    Supports Antigravity and Kiro editors with easy configuration.
+    ]]></description>
+
+    <change-notes><![CDATA[
+    <h3>Version 1.0.0 - Initial Release</h3>
+    <ul>
+        <li>Initial plugin release</li>
+        <li>Context menu integration for files and folders</li>
+        <li>Support for Antigravity and Kiro AI editors</li>
+        <li>Settings panel for configuration</li>
+        <li>Cross-platform compatibility</li>
+    </ul>
+    ]]></change-notes>
+
+    <!-- 插件分类和标签 -->
+    <category>Tools Integration</category>
+    
+    <!-- 产品和插件兼容性要求 -->
+    <depends>com.intellij.modules.platform</depends>
+    
+    <!-- 兼容的 IDE 产品 -->
+    <idea-version since-build="233" until-build="253.*"/>
+    
+
+
+    <!-- 插件定义的扩展点 -->
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- AIEditor 可执行文件路径设置页面 -->
+        <applicationConfigurable 
+            parentId="tools" 
+            instance="com.github.qiuapeng921.openaieditor.settings.AIEditorSettingsConfigurable"
+            id="com.github.qiuapeng921.openaieditor.settings.AIEditorSettingsConfigurable"
+            displayName="AIEditor"/>
+        
+        <!-- 通知组 -->
+        <notificationGroup id="AIEditor" displayType="BALLOON"/>
+    </extensions>
+
+    <actions>
+        <!-- AIEditor 主菜单组 -->
+        <group id="com.github.qiuapeng921.openaieditor.AIEditorGroup" text="Open In AIEditor" description="在 AI 编辑器中打开" popup="true">
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="first"/>
+            
+            <!-- Antigravity 子菜单项 -->
+            <action id="com.github.qiuapeng921.openaieditor.OpenFileInAntigravity" 
+                    class="com.github.qiuapeng921.openaieditor.actions.OpenFileInAntigravityAction" 
+                    text="Antigravity" 
+                    description="在 Antigravity IDE 中打开此文件"/>
+            
+            <action id="com.github.qiuapeng921.openaieditor.OpenFolderInAntigravity" 
+                    class="com.github.qiuapeng921.openaieditor.actions.OpenFolderInAntigravityAction" 
+                    text="Antigravity" 
+                    description="在 Antigravity IDE 中打开此文件夹"/>
+            
+            <!-- Kiro 子菜单项 -->
+            <action id="com.github.qiuapeng921.openaieditor.OpenFileInKiro" 
+                    class="com.github.qiuapeng921.openaieditor.actions.OpenFileInKiroAction" 
+                    text="Kiro" 
+                    description="在 Kiro IDE 中打开此文件"/>
+            
+            <action id="com.github.qiuapeng921.openaieditor.OpenFolderInKiro" 
+                    class="com.github.qiuapeng921.openaieditor.actions.OpenFolderInKiroAction" 
+                    text="Kiro" 
+                    description="在 Kiro IDE 中打开此文件夹"/>
+        </group>
+    </actions>
+</idea-plugin>
