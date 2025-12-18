@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.github.qiuapeng921.openaieditor"
-version = "1.0.0"
+version = "1.0.1"
 
 repositories {
     mavenCentral()
@@ -32,6 +32,13 @@ tasks {
         compilerOptions {
             jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
         }
+    }
+    
+    // 在打包时排除 Kotlin 标准库，减小插件体积
+    buildPlugin {
+        exclude("**/kotlin-stdlib*.jar")
+        exclude("**/kotlin-reflect*.jar")
+        exclude("**/kotlinx-*.jar")
     }
 
     patchPluginXml {
