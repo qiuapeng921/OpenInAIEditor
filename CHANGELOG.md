@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.1] - 2025-12-18
+
+### 🐛 Bug 修复
+- **修复国际化占位符问题**: 使用 `MessageFormat` 正确处理 `{0}` 等占位符，现在会正确显示 "正在 Cursor 中打开..." 而不是 "正在 {0} 中打开..."
+- **修复状态栏组件已弃用 API 警告**: 使用 `StatusBarWidget.TextPresentation` 替代已弃用的 `MultipleTextValuesPresentation`
+
+### ⚡ 性能优化
+- **插件体积大幅减小**: 从 1.65 MB 减小到 50 KB，减小 **97%**
+- **排除 Kotlin 标准库**: 使用 IDE 提供的 Kotlin 标准库，避免版本冲突
+- **加载速度提升**: 更小的体积带来更快的下载和安装速度
+
+### 📝 技术改进
+- 添加 `@Suppress("DEPRECATION")` 注解处理必要的已弃用方法
+- 优化代码结构，提取 `getEnabledEditors()` 方法提高可读性
+- 简化 `createPopup()` 方法实现
+
 ## [1.0.0] - 2025-12-18
 
 ### 🎉 首个正式版本
