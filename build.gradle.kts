@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.github.qiuapeng921.openaieditor"
-version = "1.0.3"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
@@ -32,7 +32,7 @@ tasks {
 
     patchPluginXml {
         sinceBuild.set("233")
-        untilBuild.set("253.*")
+        untilBuild.set("")  // 不设置上限，支持所有未来版本
         
         // 插件描述信息
         pluginDescription.set("""
@@ -47,18 +47,26 @@ tasks {
             • Universal JetBrains IDE support
         """.trimIndent())
         
-        // 变更日志
-        changeNotes.set("""
-            <h3>🎉 Version 2.0.0 - Major Rewrite</h3>
-            <ul>
-                <li>🎯 Rebranded to "Open In AIEditor"</li>
-                <li>📦 Package restructure to com.github.qiuapeng921.openaieditor</li>
-                <li>🧹 Simplified codebase, removed auto-detection</li>
-                <li>📁 Improved hierarchical menu structure</li>
-                <li>⚡ Performance improvements and better UX</li>
-                <li>📖 Open source ready with proper documentation</li>
-            </ul>
-        """.trimIndent())
+        // 从 CHANGELOG.md 读取变更日志
+        val changelogFile = file("CHANGELOG.md")
+        if (changelogFile.exists()) {
+            val changelog = changelogFile.readText()
+            // 提取最新版本的变更内容（从第一个 ## 到下一个 ## 或文件结束）
+            val latestChanges = changelog
+                .substringAfter("## [")
+                .substringBefore("\n## [")
+                .let { section ->
+                    val version = section.substringBefore("]")
+                    val content = section.substringAfter("\n").trim()
+                    // 转换 Markdown 为简单 HTML
+                    val htmlContent = content
+                        .replace(Regex("### (.+)")) { "<h4>${it.groupValues[1]}</h4>" }
+                        .replace(Regex("- (.+)")) { "<li>${it.groupValues[1]}</li>" }
+                        .let { "<h3>🎉 Version $version</h3><ul>$it</ul>" }
+                    htmlContent
+                }
+            changeNotes.set(latestChanges)
+        }
     }
 
     signPlugin {

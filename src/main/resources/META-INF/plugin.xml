@@ -4,32 +4,14 @@
     <name>Open In AIEditor</name>
     <vendor email="qiuapeng921@gmail.com" url="https://github.com/qiuapeng921/open-in-aieditor">qiuapeng921</vendor>
 
-    <description><![CDATA[
-    A simple JetBrains IDE plugin that adds context menu options to open files and folders in AI-powered editors.
-    Supports Antigravity and Kiro editors with easy configuration.
-    ]]></description>
-
-    <change-notes><![CDATA[
-    <h3>Version 1.0.0 - Initial Release</h3>
-    <ul>
-        <li>Initial plugin release</li>
-        <li>Context menu integration for files and folders</li>
-        <li>Support for Antigravity and Kiro AI editors</li>
-        <li>Settings panel for configuration</li>
-        <li>Cross-platform compatibility</li>
-    </ul>
-    ]]></change-notes>
-
     <!-- 插件分类和标签 -->
     <category>Tools Integration</category>
     
     <!-- 产品和插件兼容性要求 -->
     <depends>com.intellij.modules.platform</depends>
     
-    <!-- 兼容的 IDE 产品 -->
-    <idea-version since-build="233" until-build="253.*"/>
-    
-
+    <!-- 兼容的 IDE 产品：2023.3 及所有后续版本 -->
+    <idea-version since-build="233"/>
 
     <!-- 插件定义的扩展点 -->
     <extensions defaultExtensionNs="com.intellij">
