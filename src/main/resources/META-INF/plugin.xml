@@ -24,35 +24,22 @@
         
         <!-- 通知组 -->
         <notificationGroup id="AIEditor" displayType="BALLOON"/>
+        
+        <!-- 状态栏组件 -->
+        <statusBarWidgetFactory 
+            id="com.github.qiuapeng921.openaieditor.statusbar.EditorSelectorWidgetFactory"
+            implementation="com.github.qiuapeng921.openaieditor.statusbar.EditorSelectorWidgetFactory"/>
     </extensions>
 
     <actions>
-        <!-- AIEditor 主菜单组 -->
-        <group id="com.github.qiuapeng921.openaieditor.AIEditorGroup" text="Open In AIEditor" description="在 AI 编辑器中打开" popup="true">
+        <!-- AIEditor 动态菜单组 -->
+        <group id="com.github.qiuapeng921.openaieditor.AIEditorGroup" 
+               text="Open In AIEditor" 
+               description="在 AI 编辑器中打开" 
+               popup="true"
+               class="com.github.qiuapeng921.openaieditor.actions.AIEditorActionGroup">
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
             <add-to-group group-id="ProjectViewPopupMenu" anchor="first"/>
-            
-            <!-- Antigravity 子菜单项 -->
-            <action id="com.github.qiuapeng921.openaieditor.OpenFileInAntigravity" 
-                    class="com.github.qiuapeng921.openaieditor.actions.OpenFileInAntigravityAction" 
-                    text="Antigravity" 
-                    description="在 Antigravity IDE 中打开此文件"/>
-            
-            <action id="com.github.qiuapeng921.openaieditor.OpenFolderInAntigravity" 
-                    class="com.github.qiuapeng921.openaieditor.actions.OpenFolderInAntigravityAction" 
-                    text="Antigravity" 
-                    description="在 Antigravity IDE 中打开此文件夹"/>
-            
-            <!-- Kiro 子菜单项 -->
-            <action id="com.github.qiuapeng921.openaieditor.OpenFileInKiro" 
-                    class="com.github.qiuapeng921.openaieditor.actions.OpenFileInKiroAction" 
-                    text="Kiro" 
-                    description="在 Kiro IDE 中打开此文件"/>
-            
-            <action id="com.github.qiuapeng921.openaieditor.OpenFolderInKiro" 
-                    class="com.github.qiuapeng921.openaieditor.actions.OpenFolderInKiroAction" 
-                    text="Kiro" 
-                    description="在 Kiro IDE 中打开此文件夹"/>
         </group>
     </actions>
 </idea-plugin>

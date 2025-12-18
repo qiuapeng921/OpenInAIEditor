@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.github.qiuapeng921.openaieditor"
-version = "1.0.3"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
@@ -40,15 +40,21 @@ tasks {
         
         // 插件描述信息
         pluginDescription.set("""
-            A powerful JetBrains IDE plugin that seamlessly integrates AI-powered editors into your development workflow.
-            Add convenient context menu options to quickly open files and folders in external AI editors like Antigravity and Kiro.
+            A powerful JetBrains IDE plugin that seamlessly integrates 16 AI code editors into your development workflow.
+            Quickly switch between JetBrains IDE and your favorite AI editors with cursor position preservation.
             
-            Key Features:
-            • Smart context menu integration
-            • Support for Antigravity and Kiro AI editors  
-            • Easy configuration through settings panel
-            • Cross-platform compatibility
-            • Universal JetBrains IDE support
+            ✨ Key Features:
+            • Support for 16 AI code editors (Cursor, Windsurf, Void, Antigravity, Kiro, and more)
+            • Smart enable/disable control - only show the editors you need
+            • Smart context menu integration - right-click to open in any enabled editor
+            • Status bar widget for quick editor switching
+            • Cursor position preservation - maintains line and column when switching editors
+            • Cross-platform compatibility (macOS, Windows, Linux)
+            • Flexible configuration - individual enable switch and path for each editor
+            • International support (English & Chinese)
+            
+            🤖 Supported AI Editors:
+            Cursor, Windsurf, Void, Trae, Qoder, Kiro, Antigravity, CatPawAI, Melty, Aide, Zed, PearAI, Void Editor, Supermaven, Aider, Continue
         """.trimIndent())
         
         // 从 CHANGELOG.md 读取变更日志

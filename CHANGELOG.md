@@ -1,37 +1,54 @@
 # Changelog
 
-All notable changes to the "Open In AIEditor" plugin will be documented in this file.
-
-## [1.0.3] - 2025-12-18
-
-### Fixed
-- **修复版本兼容性配置问题** - 添加关键的 `updateSinceUntilBuild` 和 `sameSinceUntilBuild` 配置
-- 明确设置 `untilBuild` 为 `253.*`,确保插件市场正确识别兼容性
-- 完全解决 "Not compatible with PhpStorm 2025.3" 的问题
-
-### Changed
-- 优化构建配置,参考成功案例 EditorJumper 的配置
-
-## [1.0.2] - 2025-12-18
-
-### Fixed
-- 移除未使用的废弃 API 调用 `FileChooserDescriptorFactory.createSingleFileDescriptor()`
-- 清理未使用的导入,进一步提升代码质量
-
-## [1.0.1] - 2025-12-18
-
-### Fixed
-- 修复使用废弃 API 的问题,替换 `addBrowseFolderListener` 为新的 `FileChooser.chooseFile` API
-- 完全兼容 PhpStorm 2025.3 和 IntelliJ IDEA 2025.3
-
-### Changed
-- 更新文件选择器实现,使用最新的 IntelliJ Platform API
+All notable changes to this project will be documented in this file.
 
 ## [1.0.0] - 2025-12-18
 
-### Added
-- Initial plugin release
-- Context menu integration for files and folders
-- Support for Antigravity and Kiro AI editors
-- Settings panel for configuration
-- Cross-platform compatibility
+### 🎉 首个正式版本
+全新的 JetBrains IDE 插件，支持快速切换到外部编辑器
+
+### ✨ 核心功能
+
+#### 编辑器支持
+- **16 个 AI 编辑器支持**: 专注于 AI 代码编辑器
+  - Cursor, Windsurf, Void, Trae, Qoder, Kiro, Antigravity, CatPawAI
+  - Melty, Aide, Zed, PearAI, Void Editor, Supermaven, Aider, Continue
+- **智能启用控制**: 每个编辑器都有独立的启用开关，只显示你需要的编辑器
+
+#### 使用方式
+- **右键菜单**: 在文件/文件夹上右键 → "Open In AIEditor" → 选择编辑器
+- **状态栏组件**: 点击状态栏图标快速切换默认编辑器
+
+#### 智能功能
+- **光标位置保持**: 在外部编辑器中自动定位到相同的行和列
+- **跨平台支持**: 完整支持 macOS, Windows, Linux
+- **智能路径检测**: 自动检测编辑器路径，无需手动配置（部分编辑器）
+- **国际化支持**: 中英文界面
+
+### 🏗️ 架构设计
+
+#### 设计模式
+- **配置化架构**: 使用配置注册表管理所有编辑器，添加新编辑器只需添加配置
+- **Strategy 模式**: `EditorHandler` 接口统一编辑器处理逻辑
+- **Factory 模式**: `EditorHandlerFactory` 动态创建编辑器处理器
+- **动态菜单**: 根据配置自动生成右键菜单项
+
+#### 代码组织
+- `actions/`: 用户动作处理（BaseAction, AIEditorActionGroup, OpenInEditorAction）
+- `editors/`: 编辑器处理器（EditorRegistry, EditorHandlerFactory, GenericEditorHandler）
+- `settings/`: 配置管理（AIEditorSettings, AIEditorSettingsConfigurable）
+- `statusbar/`: 状态栏组件（EditorSelectorWidget, EditorSelectorWidgetFactory）
+- `utils/`: 工具类（EditorTargetUtils, I18nUtils）
+
+### 🔧 技术特性
+- **零代码扩展**: 添加新编辑器只需在配置文件中添加一行
+- **类型安全**: 使用 Kotlin data class 确保配置完整性
+- **错误处理**: 统一的通知和错误提示机制
+- **状态持久化**: 使用 IntelliJ 推荐的 `PersistentStateComponent` 模式
+- **完整注释**: 所有代码都有详细的中文注释
+
+### 🎯 兼容性
+- **IDE 版本**: 2023.3 及以上所有 JetBrains IDE
+- **支持产品**: IntelliJ IDEA, PhpStorm, WebStorm, PyCharm, GoLand, RubyMine, CLion, Rider 等
+- **系统要求**: Java 17+
+
