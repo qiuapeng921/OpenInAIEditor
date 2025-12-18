@@ -3,8 +3,6 @@
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !gradle/wrapper/gradle-wrapper.properties
-!gradlew
-!gradlew.bat
 
 # IntelliJ IDEA
 .idea/
@@ -29,7 +27,6 @@ Thumbs.db
 
 # Java
 *.class
-*.jar
 *.war
 *.ear
 
@@ -40,4 +37,5 @@ Thumbs.db
 local.properties
 
 # GitHub Actions
-!.github/
+!.github/tributions/*.zip
+!build/distributions/open-in-aieditor-*.zip
